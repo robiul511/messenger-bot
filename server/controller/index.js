@@ -38,6 +38,22 @@ class Controller {
       })
     // res.send(`masuk get message by id ${id}`)
   }
+  static deleteMessageById (req, res) {
+    const id = +req.params.id
+    // console.log(id)
+    User.destroy({
+      where: {
+        id
+      }
+    }) 
+      .then(dataResponse => {
+        res.json({message: "delete success"})
+      })
+      .catch(err => {
+        console.log(err)
+        res.json(err)
+      })
+  }
 }
 
 
